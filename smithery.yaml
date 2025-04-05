@@ -1,8 +1,37 @@
-name: korean-school-meal-bot
-description: 한국 학교 급식 정보 조회 서버
+# Smithery.ai configuration
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      NEIS_API_KEY:
+        type: string
+        description: NEIS Open API 키
+      PORT:
+        type: string
+        description: 서버 포트
+        default: "3000"
+      TRANSPORT:
+        type: string
+        description: 전송 프로토콜
+        default: "ws"
+    required: ["NEIS_API_KEY"]
+  commandFunction: |-
+    (config) => ({
+      "command": "node",
+      "args": [
+        "dist/mealServer.js"
+      ],
+      "env": {
+        "NEIS_API_KEY": config.NEIS_API_KEY,
+        "PORT": config.PORT || "3000",
+        "TRANSPORT": config.TRANSPORT || "ws"
+      }
+    })
 
 build:
   type: docker
+  dockerfile: ./Dockerfile
 
 env:
   NEIS_API_KEY:
