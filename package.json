@@ -6,22 +6,26 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/mealServer.js",
-    "dev": "ts-node src/mealServer.ts",
-    "deploy": "smithery deploy"
+    "dev": "ts-node src/mealServer.ts"
   },
-  "keywords": ["mcp", "school", "meal", "korea", "neis"],
+  "keywords": [
+    "mcp",
+    "school",
+    "meal",
+    "korea",
+    "neis"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.8.0",
-    "@smithery/mcp": "^1.0.0",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
+    "korean-school-meal-bot": "file:",
     "ws": "^8.16.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@smithery/cli": "^1.0.0",
     "@types/node": "^20.11.24",
     "@types/ws": "^8.5.10",
     "ts-node": "^10.9.2",
