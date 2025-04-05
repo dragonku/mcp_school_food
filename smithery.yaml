@@ -1,22 +1,19 @@
-app:
-  name: korean-school-meal-bot
-  description: 한국 학교 급식 정보 조회 서버
+name: korean-school-meal-bot
+description: 한국 학교 급식 정보 조회 서버
 
 build:
   type: docker
-  dockerfile: ./Dockerfile
 
 env:
-  - key: NEIS_API_KEY
+  NEIS_API_KEY:
     description: NEIS Open API 키
     required: true
-  - key: PORT
+  PORT:
     description: 서버 포트
     default: "3000"
-  - key: TRANSPORT
+  TRANSPORT:
     description: 전송 프로토콜
     default: "ws"
 
-expose:
-  - port: 3000
-    protocol: tcp 
+ports:
+  - "3000:3000" 
