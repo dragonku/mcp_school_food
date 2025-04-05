@@ -1,0 +1,70 @@
+{
+  "name": "korean-school-meal-bot",
+  "version": "1.0.0",
+  "description": "한국 학교 급식 정보 조회 서버",
+  "transport": "ws",
+  "build": {
+    "command": "npm install && npm run build",
+    "output": "dist"
+  },
+  "run": {
+    "command": "node dist/mealServer.js",
+    "env": {
+      "TRANSPORT": "ws",
+      "PORT": "3000",
+      "NEIS_API_KEY": "${NEIS_API_KEY}"
+    }
+  },
+  "security": {
+    "secrets": ["NEIS_API_KEY"]
+  },
+  "dependencies": {
+    "@smithery/mcp": "^1.0.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "ws": "^8.16.0"
+  },
+  "mcp": {
+    "port": 3000,
+    "tools": [
+      {
+        "name": "getMealInfo",
+        "description": "학교 급식 정보를 조회합니다",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["daily", "weekly"],
+              "description": "조회 유형 (daily: 하루, weekly: 주간)"
+            },
+            "dateOffset": {
+              "type": "number",
+              "description": "조회할 날짜 오프셋 (0: 오늘, -1: 어제, 1: 내일, 7: 다음주)"
+            },
+            "schoolInfo": {
+              "type": "object",
+              "properties": {
+                "ATPT_OFCDC_SC_CODE": {
+                  "type": "string",
+                  "description": "시도교육청코드"
+                },
+                "SD_SCHUL_CODE": {
+                  "type": "string",
+                  "description": "학교코드"
+                },
+                "SCHUL_NM": {
+                  "type": "string",
+                  "description": "학교명"
+                }
+              },
+              "required": ["ATPT_OFCDC_SC_CODE", "SD_SCHUL_CODE", "SCHUL_NM"],
+              "description": "학교 정보"
+            }
+          },
+          "required": ["type", "dateOffset", "schoolInfo"]
+        }
+      }
+    ]
+  }
+} 

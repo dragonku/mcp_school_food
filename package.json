@@ -1,0 +1,30 @@
+{
+  "name": "korean-school-meal-bot",
+  "version": "1.0.0",
+  "description": "한국 학교 급식 정보 조회 서버",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/mealServer.js",
+    "dev": "ts-node src/mealServer.ts",
+    "deploy": "smithery deploy"
+  },
+  "keywords": ["mcp", "school", "meal", "korea", "neis"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "@smithery/mcp": "^1.0.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "ws": "^8.16.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@smithery/cli": "^1.0.0",
+    "@types/node": "^20.11.24",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

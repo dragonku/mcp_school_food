@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "school-meal-bot": {
+      "command": "npm",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "cwd": "${workspaceRoot}"
+    }
+  }
+} 
